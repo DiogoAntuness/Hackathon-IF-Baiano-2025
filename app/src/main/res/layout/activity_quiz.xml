@@ -1,0 +1,47 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="#FFF8E1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:progressTint="@android:color/holo_orange_dark"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardPergunta"
+        android:layout_marginTop="32dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="24dp"
+        app:cardElevation="6dp"
+        app:cardCornerRadius="12dp">
+
+        <TextView
+            android:id="@+id/txtPergunta"
+            android:textSize="20sp"
+            android:textColor="#3E2723"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/btnSim"
+        android:text="Sim"
+        android:layout_marginTop="32dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btnNao"
+        android:text="Não"
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
