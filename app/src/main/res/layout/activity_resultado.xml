@@ -11,7 +11,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/tvScore"
+            android:id="@+id/txtScore"
             android:text="Resultado"
             android:textSize="28sp"
             android:textStyle="bold"
@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"/>
 
         <TextView
-            android:id="@+id/tvResumo"
+            android:id="@+id/txtResumo"
             android:textSize="20sp"
             android:gravity="center"
             android:layout_marginBottom="30dp"
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"/>
 
         <TextView
-            android:id="@+id/tvMensagemFinal"
+            android:id="@+id/txtMensagemFinal"
             android:textSize="18sp"
             android:gravity="center"
             android:layout_width="wrap_content"

@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.raizafro.databinding.ActivityResultadoBinding
 import com.example.raizafro.models.perguntas
 
-class ResultadoActivity : AppCompatActivity() {
+class ResultadoActivity : AppCompatActivity() { // EM ANDAMENTO
 
     private lateinit var binding: ActivityResultadoBinding
 
@@ -16,20 +16,21 @@ class ResultadoActivity : AppCompatActivity() {
 
         val score = intent.getIntExtra("score", 0)
         val total = perguntas.size
-        val percent = ((score.toDouble() / total.toDouble()) * 100).toInt()
+        val porcentagem = ((score.toDouble() / total.toDouble()) * 100).toInt()
 
-        binding.tvScore.text = "Seu Índice de Vivência Afro:\n$percent%"
+        binding.txtScore.text = "Seu Índice de Vivência Afro:\n$porcentagem%"
 
-        val resumo = when (percent) {
+        val resumo = when (porcentagem) {
+            // Colocar texto se pontuar zero - ''LEMBRETE''
             in 0..20 -> "Você pratica mais cultura afro-brasileira do que imagina, mesmo sem perceber!"
             in 21..50 -> "Boa parte do seu cotidiano tem raízes afro — mesmo quando isso passa despercebido."
             in 51..80 -> "A cultura afro-brasileira está fortemente presente no seu dia a dia!"
             else -> "Você vive intensamente práticas afro-brasileiras na sua rotina!"
         }
 
-        binding.tvResumo.text = resumo
+        binding.txtResumo.text = resumo
 
-        binding.tvMensagemFinal.text =
+        binding.txtMensagemFinal.text =
             "A cultura afro-brasileira não é 'coisa dos outros'. Ela estrutura a forma como o Brasil fala, come, dança, celebra, acredita e vive.\n\n" +
                     "Seu cotidiano é afro — reconhecer isso é reconhecer a história que construiu o país."
     }

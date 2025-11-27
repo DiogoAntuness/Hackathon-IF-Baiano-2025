@@ -2,16 +2,12 @@ package com.example.raizafro
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.afroquiz.CuriosidadesActivity
 import com.example.raizafro.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() { // Tela inicial simples, apenas para abrir as outras telas
 
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding // Uso de Binding, melhor que findViewById ;D
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -1,4 +1,4 @@
-package com.example.afroquiz
+package com.example.raizafro
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -7,7 +7,7 @@ import com.example.raizafro.databinding.ActivityCuriosidadesBinding
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class CuriosidadesActivity : AppCompatActivity() {
+class CuriosidadesActivity : AppCompatActivity() { // SEM FUNCIONALIDADE AINDA, APENAS EXISTINDO
 
     private lateinit var binding: ActivityCuriosidadesBinding
 
@@ -25,9 +25,9 @@ class CuriosidadesActivity : AppCompatActivity() {
             finish()
         }
 
-        // FECHA SOZINHO APÓS 2s (SEM HANDLER DEPRECIADO)
+        // FECHA SOZINHO APÓS 3s
         lifecycleScope.launch {
-            delay(2000)
+            delay(3000)
             finish()
         }
     }

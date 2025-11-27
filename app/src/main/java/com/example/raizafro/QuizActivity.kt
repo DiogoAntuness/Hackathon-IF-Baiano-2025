@@ -16,7 +16,7 @@ class QuizActivity : AppCompatActivity() {
 
     private var index = 0
     private var score = 0
-    private var answered = false
+    private var respondida = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,28 +25,29 @@ class QuizActivity : AppCompatActivity() {
 
         carregarPergunta()
 
-        binding.btnSair.setOnClickListener { finishAffinity() }
+        binding.btnSair.setOnClickListener { finish() }
 
         binding.btnSim.setOnClickListener { responder(0) }
         binding.btnNao.setOnClickListener { responder(1) }
     }
 
     private fun carregarPergunta() {
-        answered = false
+        respondida = false
 
-        val p = perguntas[index]
-        binding.txtPergunta.text = p.text
+        val p = perguntas[index] // p Pega as pergunta do Model: Pergunta.kt
+        binding.txtPergunta.text = p.text  // Recebe o texto no xml.
     }
 
     private fun responder(opcao: Int) {
-        if (answered) return
-        answered = true
+        if (respondida) return // Se a pergunta já foi respondida, a função para imediatamente.
 
-        val p = perguntas[index]
+        respondida = true  // Se ainda não, marca como respondida.
 
-        if (opcao == p.correctIndex) score++
+        val p = perguntas[index] // pega a pergunta atual.
 
-        abrirCuriosidade(p.curiosity)
+        if (opcao == p.correctIndex) score++ // se marcar 'sim' soma no score.
+
+        abrirCuriosidade(p.curiosidade) // Abre a curiosidade independente da resposta.
     }
 
     private fun abrirCuriosidade(texto: String) {
