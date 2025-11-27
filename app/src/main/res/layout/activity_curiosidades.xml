@@ -1,23 +1,374 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:padding="24dp"
-    android:background="@drawable/bg_popup"
-    android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_dark">
 
-    <TextView
-        android:id="@+id/txtCuriosidade"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Curiosidade"
-        android:textSize="18sp"
-        android:padding="16dp" />
-
-    <Button
-        android:id="@+id/btnClose"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Fechar" />
+        android:padding="20dp">
 
+        <ImageButton
+            android:id="@+id/btnVoltar"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@android:drawable/ic_menu_revert"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:tint="@color/primary_orange"
+            android:layout_alignParentStart="true"
+            android:contentDescription="Voltar" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Galeria Cultural"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="✊🏿 NEABI"
+                android:textColor="@color/primary_orange"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginStart="4dp"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/img_neabi"
+                        android:scaleType="centerCrop" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="NEABI Campus SBF"
+                            android:textColor="#D84315"
+                            android:textStyle="bold"
+                            android:textSize="18sp"
+                            android:layout_marginBottom="4dp"/>
+
+                        <TextView
+                            android:text="Núcleo de estudos afro-brasileiros e indígenas IF Baiano Senhor do Bonfim."
+                            android:textColor="#4E342E"
+                            android:textSize="14sp"
+                            android:lineSpacingExtra="3dp"
+                            android:ellipsize="end"
+                            android:maxLines="6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:id="@+id/linkNeabi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:drawablePadding="8dp"
+                            android:gravity="center_vertical"
+                            android:text="Perfil do Instragram"
+                            android:textColor="@color/primary_orange"
+                            android:textSize="14sp"
+                            android:textStyle="bold"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📚 Biblioteca Afro"
+                android:textColor="@color/primary_orange"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="16dp"
+                android:layout_marginStart="4dp"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/livro_camoes" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Camões com Dendê"
+                            android:textColor="#D84315"
+                            android:textStyle="bold"
+                            android:textSize="18sp"
+                            android:layout_marginBottom="4dp"/>
+
+                        <TextView
+                            android:text="Obra da etnolinguista Yeda Pessoa de Castro sobre a influência que línguas africanas exerceram na formação do português brasileiro."
+                            android:textColor="#4E342E"
+                            android:textSize="14sp"
+                            android:lineSpacingExtra="3dp"
+                            android:ellipsize="end"
+                            android:maxLines="6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/livro_latimempo" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Latim em pó"
+                            android:textColor="#D84315"
+                            android:textStyle="bold"
+                            android:textSize="18sp"
+                            android:layout_marginBottom="4dp"/>
+
+                        <TextView
+                            android:text="Não deixe de ler também o Latim em Pó, do Caetano Galindo. Fala da formação do Português, em especial do Português Brasileiro, trazendo muitos aspectos não apenas das línguas africanas como das línguas nativas dos que aqui habitavam."
+                            android:textColor="#4E342E"
+                            android:textSize="12sp"
+                            android:lineSpacingExtra="3dp"
+                            android:ellipsize="end"
+                            android:maxLines="6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🌍 História e Resistência"
+                android:textColor="@color/primary_orange"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginStart="4dp"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="120dp"
+                        android:src="@drawable/img"
+                        android:scaleType="centerCrop" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Quilombo dos Palmares"
+                            android:textColor="#D84315"
+                            android:textStyle="bold"
+                            android:textSize="18sp"
+                            android:layout_marginBottom="4dp"/>
+
+                        <TextView
+                            android:text="O maior símbolo de resistência à escravidão no Brasil, liderado por Zumbi e Dandara."
+                            android:textColor="#4E342E"
+                            android:textSize="14sp"
+                            android:lineSpacingExtra="3dp"
+                            android:ellipsize="end"
+                            android:maxLines="6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+
+
+
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/img_males"
+                        android:scaleType="centerCrop" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Revolta dos Malês"
+                            android:textColor="#D84315"
+                            android:textStyle="bold"
+                            android:textSize="18sp"
+                            android:layout_marginBottom="4dp"/>
+
+                        <TextView
+                            android:text="Revolta do Malês aconteceu em Salvador no dia 25 de janeiro de 1835. Naquela época, essa capital era uma das principais cidades escravistas do Brasil."
+                            android:textColor="#4E342E"
+                            android:textSize="12sp"
+                            android:lineSpacingExtra="3dp"
+                            android:ellipsize="end"
+                            android:maxLines="6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/img_tereza"
+                        android:scaleType="centerCrop" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tereza de Benguela"
+                            android:textColor="#D84315"
+                            android:textStyle="bold"
+                            android:textSize="18sp"
+                            android:layout_marginBottom="4dp"/>
+
+                        <TextView
+                            android:text="Rainha do Quilombo do Quariterê (MT). Ela criou um parlamento local e liderou a resistência negra e indígena por décadas no século XVIII."
+                            android:textColor="#4E342E"
+                            android:textSize="14sp"
+                            android:lineSpacingExtra="3dp"
+                            android:ellipsize="end"
+                            android:maxLines="6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

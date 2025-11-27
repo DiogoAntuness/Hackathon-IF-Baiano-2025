@@ -1,13 +1,13 @@
 package com.example.raizafro
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
 import com.example.raizafro.databinding.ActivityCuriosidadesBinding
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
-class CuriosidadesActivity : AppCompatActivity() { // SEM FUNCIONALIDADE AINDA, APENAS EXISTINDO
+class CuriosidadesActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCuriosidadesBinding
 
@@ -16,19 +16,19 @@ class CuriosidadesActivity : AppCompatActivity() { // SEM FUNCIONALIDADE AINDA, 
         binding = ActivityCuriosidadesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // RECEBENDO A CURIOSIDADE
-        val texto = intent.getStringExtra("curiosidade") ?: "Sem curiosidade disponível."
-        binding.txtCuriosidade.text = texto
+        setupLink(binding.linkNeabi, "https://www.instagram.com/neabi.bonfim")
 
-        // BOTÃO FECHAR
-        binding.btnClose.setOnClickListener {
-            finish()
+        // Botão voltar no topo da tela
+        binding.btnVoltar.setOnClickListener {
+            finish() // Fecha a tela e volta para o Menu
         }
+    }
 
-        // FECHA SOZINHO APÓS 3s
-        lifecycleScope.launch {
-            delay(3000)
-            finish()
+    private fun setupLink(textView: TextView, url: String) {
+        textView.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(url)
+            startActivity(intent)
         }
     }
 }

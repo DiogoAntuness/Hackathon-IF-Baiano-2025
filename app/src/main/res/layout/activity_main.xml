@@ -55,7 +55,7 @@
 
         <TextView
             android:id="@+id/btnCuriosidades"
-            android:text="Ver Curiosidades"
+            android:text="Saiba Mais Clicando Aqui"
             android:textColor="@color/primary_orange"
             android:textStyle="bold"
             android:padding="10dp"
