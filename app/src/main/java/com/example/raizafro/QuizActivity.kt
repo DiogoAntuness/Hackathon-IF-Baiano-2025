@@ -34,6 +34,13 @@ class QuizActivity : AppCompatActivity() {
     private fun carregarPergunta() {
         respondida = false
 
+        // Lógica da Barra de Progresso
+        val totalPerguntas = perguntas.size
+        val perguntaAtual = index + 1 // Como o index começa em 0, somamos 1
+        val progresso = (perguntaAtual * 100) / totalPerguntas
+        // Aplica na barra (com animação suave se possível, mas direto por enquanto)
+        binding.progressBar.progress = progresso
+
         val p = perguntas[index] // p Pega as pergunta do Model: Pergunta.kt
         binding.txtPergunta.text = p.text  // Recebe o texto no xml.
     }

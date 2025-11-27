@@ -20,9 +20,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".QuizActivity" />
-        <activity android:name="com.example.afroquiz.CuriosidadesActivity"/> 
-        <activity android:name=".ResultadoActivity"/>
+        <activity android:name=".QuizActivity"
+            android:exported="false"/>
+        <activity android:name=".CuriosidadesActivity"
+            android:exported="false"/>
+        <activity android:name=".ResultadoActivity"
+            android:exported="false"/>
     </application>
 
 </manifest>
