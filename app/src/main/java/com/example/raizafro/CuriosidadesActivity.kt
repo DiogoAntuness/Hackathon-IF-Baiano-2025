@@ -1,8 +1,11 @@
-package com.example.raizafro
+package com.example.afroquiz
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.example.raizafro.databinding.ActivityCuriosidadesBinding
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class CuriosidadesActivity : AppCompatActivity() {
 
@@ -13,13 +16,19 @@ class CuriosidadesActivity : AppCompatActivity() {
         binding = ActivityCuriosidadesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val curiosidades = listOf(
-            "A palavra 'cafuné' tem origem no quimbundo: 'kafuné' significa fazer carinho na cabeça.",
-            "O samba nasceu de tradições africanas trazidas pelos povos escravizados.",
-            "A capoeira é uma mistura de luta e dança criada por africanos no Brasil.",
-            "Diversas gírias como 'moleque', 'bagunça' e 'dengo' vêm de línguas africanas."
-        )
+        // RECEBENDO A CURIOSIDADE
+        val texto = intent.getStringExtra("curiosidade") ?: "Sem curiosidade disponível."
+        binding.txtCuriosidade.text = texto
 
-        binding.txtCuriosidades.text = curiosidades.joinToString("\n\n• ", prefix = "• ")
+        // BOTÃO FECHAR
+        binding.btnClose.setOnClickListener {
+            finish()
+        }
+
+        // FECHA SOZINHO APÓS 2s (SEM HANDLER DEPRECIADO)
+        lifecycleScope.launch {
+            delay(2000)
+            finish()
+        }
     }
 }

@@ -21,8 +21,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".QuizActivity" />
-        <activity android:name=".CuriosidadesActivity" />
-        <activity android:name=".ResultadoActivity" />
+        <activity android:name="com.example.afroquiz.CuriosidadesActivity"/> 
+        <activity android:name=".ResultadoActivity"/>
     </application>
 
 </manifest>

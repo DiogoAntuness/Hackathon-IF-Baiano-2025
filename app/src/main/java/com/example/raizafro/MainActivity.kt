@@ -6,6 +6,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.afroquiz.CuriosidadesActivity
 import com.example.raizafro.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

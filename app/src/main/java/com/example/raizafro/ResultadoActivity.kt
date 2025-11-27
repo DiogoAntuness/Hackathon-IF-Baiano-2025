@@ -1,10 +1,9 @@
 package com.example.raizafro
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.raizafro.data.CalculoIndice
 import com.example.raizafro.databinding.ActivityResultadoBinding
+import com.example.raizafro.models.perguntas
 
 class ResultadoActivity : AppCompatActivity() {
 
@@ -15,20 +14,23 @@ class ResultadoActivity : AppCompatActivity() {
         binding = ActivityResultadoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val pontos = intent.getIntExtra("pontos", 0)
-        val max = intent.getIntExtra("maxPontos", 0)
+        val score = intent.getIntExtra("score", 0)
+        val total = perguntas.size
+        val percent = ((score.toDouble() / total.toDouble()) * 100).toInt()
 
-        val indice = CalculoIndice.calcular(pontos, max)
-        binding.txtResultado.text = "$indice%"
+        binding.tvScore.text = "Seu Índice de Vivência Afro:\n$percent%"
 
-        binding.txtMensagem.text = when {
-            indice >= 80 -> "Você vive intensamente a cultura afro-brasileira!"
-            indice >= 50 -> "A cultura afro está presente em muito do seu dia a dia."
-            else -> "Há muito sobre cultura afro-brasileira que você talvez ainda não conheça."
+        val resumo = when (percent) {
+            in 0..20 -> "Você pratica mais cultura afro-brasileira do que imagina, mesmo sem perceber!"
+            in 21..50 -> "Boa parte do seu cotidiano tem raízes afro — mesmo quando isso passa despercebido."
+            in 51..80 -> "A cultura afro-brasileira está fortemente presente no seu dia a dia!"
+            else -> "Você vive intensamente práticas afro-brasileiras na sua rotina!"
         }
 
-        binding.btnCuriosidades.setOnClickListener {
-            startActivity(Intent(this, CuriosidadesActivity::class.java))
-        }
+        binding.tvResumo.text = resumo
+
+        binding.tvMensagemFinal.text =
+            "A cultura afro-brasileira não é 'coisa dos outros'. Ela estrutura a forma como o Brasil fala, come, dança, celebra, acredita e vive.\n\n" +
+                    "Seu cotidiano é afro — reconhecer isso é reconhecer a história que construiu o país."
     }
 }

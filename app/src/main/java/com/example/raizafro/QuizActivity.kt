@@ -1,17 +1,22 @@
 package com.example.raizafro
 
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.raizafro.databinding.ActivityQuizBinding
+import com.example.raizafro.databinding.PopupCuriosidadeBinding
+import com.example.raizafro.models.perguntas
 
 class QuizActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityQuizBinding
-    private val perguntas = PerguntasRepository.getPerguntas()
+
     private var index = 0
-    private var pontos = 0
-    private val maxPontos = perguntas.sumOf { it.pontos }
+    private var score = 0
+    private var answered = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,51 +25,58 @@ class QuizActivity : AppCompatActivity() {
 
         carregarPergunta()
 
-        binding.btnSim.setOnClickListener {
-            pontos += perguntas[index].pontos
-            proximaPergunta()
-        }
+        binding.btnSair.setOnClickListener { finishAffinity() }
 
-        binding.btnNao.setOnClickListener {
-            proximaPergunta()
-        }
+        binding.btnSim.setOnClickListener { responder(0) }
+        binding.btnNao.setOnClickListener { responder(1) }
     }
 
     private fun carregarPergunta() {
-        val pergunta = perguntas[index]
-        binding.txtPergunta.text = pergunta.texto
+        answered = false
 
-        // animação leve
-        binding.cardPergunta.animate()
-            .alpha(1f)
-            .setDuration(300)
-            .start()
-
-        binding.progressBar.progress = index + 1
-        binding.progressBar.max = perguntas.size
+        val p = perguntas[index]
+        binding.txtPergunta.text = p.text
     }
 
-    private fun proximaPergunta() {
-        // animação de saída
-        binding.cardPergunta.animate()
-            .alpha(0f)
-            .setDuration(200)
-            .withEndAction {
-                index++
-                if (index < perguntas.size) {
-                    carregarPergunta()
-                } else {
-                    finalizarQuiz()
-                }
-            }
-            .start()
+    private fun responder(opcao: Int) {
+        if (answered) return
+        answered = true
+
+        val p = perguntas[index]
+
+        if (opcao == p.correctIndex) score++
+
+        abrirCuriosidade(p.curiosity)
     }
 
-    private fun finalizarQuiz() {
-        val intent = Intent(this, ResultadoActivity::class.java)
-        intent.putExtra("pontos", pontos)
-        intent.putExtra("maxPontos", maxPontos)
-        startActivity(intent)
-        finish()
+    private fun abrirCuriosidade(texto: String) {
+        val dialog = Dialog(this)
+        val popBinding = PopupCuriosidadeBinding.inflate(layoutInflater)
+
+        dialog.setContentView(popBinding.root)
+        dialog.setCancelable(false)
+
+        popBinding.txtCuriosidade.text = texto
+
+        popBinding.btnClose.setOnClickListener {
+            dialog.dismiss()
+            irParaProxima()
+        }
+
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.show()
+    }
+
+    private fun irParaProxima() {
+        index++
+
+        if (index < perguntas.size) {
+            carregarPergunta()
+        } else {
+            val intent = Intent(this, ResultadoActivity::class.java)
+            intent.putExtra("score", score)
+            startActivity(intent)
+            finish()
+        }
     }
 }
