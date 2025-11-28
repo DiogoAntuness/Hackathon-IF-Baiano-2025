@@ -9,8 +9,11 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.raizafro.databinding.ActivityQuizBinding
 import com.example.raizafro.databinding.PopupCuriosidadeBinding
 import com.example.raizafro.models.perguntas
+import com.example.raizafro.models.Pergunta   // Importa a estrutura de dados
 
 class QuizActivity : AppCompatActivity() {
+
+    private lateinit var perguntasEmbaralhadas: List<Pergunta>
 
     private lateinit var binding: ActivityQuizBinding
 
@@ -23,6 +26,8 @@ class QuizActivity : AppCompatActivity() {
         binding = ActivityQuizBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        perguntasEmbaralhadas = perguntas.shuffled()
+
         carregarPergunta()
 
         binding.btnSair.setOnClickListener { finish() }
@@ -34,13 +39,13 @@ class QuizActivity : AppCompatActivity() {
     private fun carregarPergunta() {
         respondida = false
         // Lógica da Barra de Progresso
-        val totalPerguntas = perguntas.size
+        val totalPerguntas = perguntasEmbaralhadas.size
         val perguntaAtual = index + 1 // Como o index começa em 0, somamos 1
         val progresso = (perguntaAtual * 100) / totalPerguntas
         // Aplica na barra (com animação suave se possível, mas direto por enquanto)
         binding.progressBar.progress = progresso
 
-        val p = perguntas.shuffled()[index] // p Pega as pergunta do Model: Pergunta.kt // shuffled() deixa aleatório as perguntas
+        val p = perguntasEmbaralhadas[index] // p Pega as pergunta do Model: Pergunta.kt // shuffled() deixa aleatório as perguntas
         binding.txtPergunta.text = p.text  // Recebe o texto no xml.
     }
 
@@ -49,7 +54,7 @@ class QuizActivity : AppCompatActivity() {
 
         respondida = true  // Se ainda não, marca como respondida.
 
-        val p = perguntas[index] // pega a pergunta atual.
+        val p = perguntasEmbaralhadas[index] // pega a pergunta atual.
 
         if (opcao == p.correctIndex) score++ // se marcar 'sim' soma no score.
 
@@ -77,7 +82,7 @@ class QuizActivity : AppCompatActivity() {
     private fun irParaProxima() {
         index++
 
-        if (index < perguntas.size) {
+        if (index < perguntasEmbaralhadas.size) {
             carregarPergunta()
         } else {
             val intent = Intent(this, ResultadoActivity::class.java)
