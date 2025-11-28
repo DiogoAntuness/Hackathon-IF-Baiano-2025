@@ -22,5 +22,9 @@ class MainActivity : AppCompatActivity() { // Tela inicial simples, apenas para 
         binding.btnCuriosidades.setOnClickListener {
             startActivity(Intent(this, CuriosidadesActivity::class.java))
         }
+
+        binding.btnSobre.setOnClickListener {
+            startActivity(Intent(this, CreditosActivity::class.java))
+        }
     }
 }
